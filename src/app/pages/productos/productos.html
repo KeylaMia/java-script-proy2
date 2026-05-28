@@ -1,25 +1,90 @@
-<section class="container py-4">
-  <h2 class="fw-bold mb-4">Catálogo de Soluciones</h2>
+<div class="container py-4">
+  <h2 class="fw-bold mb-2">Catálogo de Soluciones</h2>
+  <p class="text-muted mb-4">Explora y filtra nuestros sistemas informáticos.</p>
 
-  @if (products$ | async; as listaCargada) {
-    <app-products-list 
-      [productsList]="listaCargada"
-      (onProductAdded)="agregarAlCarrito($event)">
-    </app-products-list>
+  <div class="row g-3 mb-4 bg-white p-3 rounded-3 shadow-sm border">
+    <div class="col-md-5">
+      <div class="input-group">
+        <span class="input-group-text bg-light text-muted"><i class="bi bi-search"></i></span>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Buscar software por nombre o detalle..." 
+          [(ngModel)]="textoBuscar"
+          (input)="aplicarFiltros()">
+      </div>
+    </div>
+    
+    <div class="col-md-7 d-flex flex-wrap gap-2 align-items-center justify-content-md-end">
+      <span class="text-muted small fw-bold me-2"><i class="bi bi-filter"></i> Filtrar por:</span>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'Todos' ? 'btn-dark' : 'btn-outline-dark'"
+        (click)="filtrarPorCategoria('Todos')">
+        Todos
+      </button>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'marketing' ? 'btn-primary' : 'btn-outline-primary'"
+        (click)="filtrarPorCategoria('marketing')">
+        Marketing
+      </button>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'inventarios' ? 'btn-success' : 'btn-outline-success'"
+        (click)="filtrarPorCategoria('inventarios')">
+        Inventarios
+      </button>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'ecommerce' ? 'btn-info text-white' : 'btn-outline-info'"
+        (click)="filtrarPorCategoria('ecommerce')">
+        E-commerce
+      </button>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'gestion' ? 'btn-warning text-dark' : 'btn-outline-warning'"
+        (click)="filtrarPorCategoria('gestion')">
+        Gestión
+      </button>
+      <button 
+        class="btn btn-sm rounded-pill px-3" 
+        [ngClass]="categoriaSeleccionada === 'seguridad' ? 'btn-danger' : 'btn-outline-danger'"
+        (click)="filtrarPorCategoria('seguridad')">
+        Seguridad
+      </button>
+    </div>
+  </div>
+
+  @if (estaCargando) {
+    <app-loader [mensaje]="'Sincronizando catálogo de soluciones informáticas...'"></app-loader>
   } @else {
-    <app-loader [mensaje]="'Sincronizando catálogo de soluciones'"></app-loader>
+    @if (productosFiltrados.length > 0) {
+      <app-products-list 
+        [productsList]="productosFiltrados"
+        (onProductAdded)="agregarAlCarrito($event)">
+      </app-products-list>
+    } @else {
+      <div class="text-center py-5 bg-white rounded border shadow-sm">
+        <i class="bi bi-folder-x h1 text-muted d-block mb-2"></i>
+        <h5 class="text-dark fw-bold">No se encontraron soluciones</h5>
+        <p class="text-muted small mb-0">Intenta cambiando el texto del buscador o seleccionando otra categoría.</p>
+      </div>
+    }
   }
-</section>
+</div>
 
 <hr class="container my-5 opacity-25">
 
 <section class="bg-light py-2">
-  <app-carrito-compras-list
-    [cartItems]="itemsEnCarrito"
-    (onQuantityChanged)="manejarCambioCantidad($event)"
-    (onItemRemoved)="eliminarDelCarrito($event)"
-    (onCheckout)="procesarCheckout()">
-  </app-carrito-compras-list>
+  <div class="container">
+    <app-carrito-compras-list
+      [cartItems]="itemsEnCarrito"
+      (onQuantityChanged)="manejarCambioCantidad($event)"
+      (onItemRemoved)="eliminarDelCarrito($event)"
+      (onCheckout)="procesarCheckout()">
+    </app-carrito-compras-list>
+  </div>
 </section>
 
 <app-modal

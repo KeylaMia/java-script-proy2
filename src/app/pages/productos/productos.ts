@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../service/product-service';
 import { ProductsList } from '../../components/products-list/products-list';
 import { Loader } from '../../components/loader/loader'; 
@@ -10,24 +10,62 @@ import { CarritoComprasList, CartItem } from '../../components/carrito-compras-l
 @Component({
   selector: 'app-products-page',
   standalone: true,
-  imports: [CommonModule, ProductsList, Loader, Modal, CarritoComprasList],
+  imports: [CommonModule, FormsModule, ProductsList, Loader, Modal, CarritoComprasList],
   templateUrl: './productos.html',
   styleUrl: './productos.css'
 })
-
 export class Productos implements OnInit {
 
-  products$!: Observable<Product[]>;
+  productosBase: Product[] = [];
+  productosFiltrados: Product[] = [];
+
+  textoBuscar: string = '';
+  categoriaSeleccionada: string = 'Todos';
+  estaCargando: boolean = true;
+
   modalAbierto: boolean = false;
   modalConfig = { title: '', message: '', type: 'info' as 'success' | 'danger' };
-  misProductosAgregados: Product[] = [];
   itemsEnCarrito: CartItem[] = [];
   
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.estaCargando = true;
+    
+    this.productService.getProducts().subscribe({
+      next: (data: any) => {
+        if (data && data.products) {
+          this.productosBase = data.products;
+        } else {
+          this.productosBase = data;
+        }
+        
+        this.productosFiltrados = [...this.productosBase];
+        this.estaCargando = false;
+      },
+      error: (err) => {
+        console.error('Error cargando la API:', err);
+        this.estaCargando = false;
+      }
+    });
+  }
 
-    this.products$ = this.productService.getProducts();
+  aplicarFiltros(): void {
+    this.productosFiltrados = this.productosBase.filter(producto => {
+      const titulo = producto.title ? producto.title.toLowerCase() : '';
+      const cumpleTexto = titulo.includes(this.textoBuscar.toLowerCase());
+      
+      const categoriaProd = producto.category ? producto.category.toLowerCase() : '';
+      const cumpleCategoria = this.categoriaSeleccionada === 'Todos' || 
+                             categoriaProd === this.categoriaSeleccionada.toLowerCase();
+
+      return cumpleTexto && cumpleCategoria;
+    });
+  }
+
+  filtrarPorCategoria(categoria: string): void {
+    this.categoriaSeleccionada = categoria;
+    this.aplicarFiltros();
   }
 
   agregarAlCarrito(product: Product): void {
@@ -64,7 +102,5 @@ export class Productos implements OnInit {
       type: 'success'
     };
     this.modalAbierto = true;
-    
   }
-
 }
