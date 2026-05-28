@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-// Importa tus componentes aquí (o usa Lazy Loading como te muestro abajo)
 import { Home } from './pages/home/home';
 import { Contacto } from './pages/contacto/contacto';
 import { Dashboard  } from './pages/dashboard/dashboard';

@@ -1,0 +1,9 @@
+
+.nav-link.active {
+  color: #0d6efd !important; 
+  font-weight: 600;
+}
+
+.btn.active {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+}

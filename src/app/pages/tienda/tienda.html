@@ -1,1 +1,10 @@
-<p>tienda works!</p>
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-dark">Nuestra Tienda Digital</h1>
+    <p class="text-muted">Explora nuestro catálogo completo de más de 50 soluciones de software listas para implementar.</p>
+  </div>
+
+  <app-products-list 
+    [productsList]="products">
+  </app-products-list>
+</div>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-
+import { DecimalPipe } from '@angular/common'; 
+import { ProductsList } from '../../components/products-list/products-list';
 
 type SolutionId = 'chatbot' | 'inventarios' | 'gestion' | 'dashboards' | 'ecommerce';
-interface Solution {
+
+export interface Solution {
   id: SolutionId;
   icon: string;
   title: string;
@@ -11,6 +12,7 @@ interface Solution {
   modalTitle: string;
   modalDescription: string;
   price: number;
+  discount: number;
 }
 
 interface User {
@@ -19,16 +21,13 @@ interface User {
   password: string;
 }
 
-
 @Component({
   selector: 'app-home',
-  imports: [DecimalPipe],
+  standalone: true, 
+  imports: [DecimalPipe], 
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-
-
-
 export class Home {
   solutions: Solution[] = [
     {
@@ -37,9 +36,9 @@ export class Home {
       title: 'Chatbots WhatsApp',
       cardDescription: 'Automatiza atención y ventas con respuestas 24/7.',
       modalTitle: 'Chatbots para WhatsApp',
-      modalDescription:
-        'Automatizamos la atención al cliente mediante chatbots inteligentes integrados con WhatsApp para ventas, reservas y soporte 24/7.',
+      modalDescription: 'Automatizamos la atención al cliente mediante chatbots inteligentes integrados con WhatsApp para ventas, reservas y soporte 24/7.',
       price: 300,
+      discount: 0,
     },
     {
       id: 'inventarios',
@@ -49,6 +48,7 @@ export class Home {
       modalTitle: 'Sistema de Inventarios',
       modalDescription: 'Sistema web para control de stock, entradas, salidas, reportes y dashboards en tiempo real.',
       price: 600,
+      discount: 0,
     },
     {
       id: 'gestion',
@@ -58,6 +58,7 @@ export class Home {
       modalTitle: 'Sistemas de Gestión',
       modalDescription: 'Plataformas personalizadas para administrar clientes, procesos internos y operaciones empresariales.',
       price: 800,
+      discount: 0,
     },
     {
       id: 'dashboards',
@@ -67,6 +68,7 @@ export class Home {
       modalTitle: 'Dashboards y Reportes',
       modalDescription: 'Visualización clara de indicadores clave para apoyar la toma de decisiones estratégicas.',
       price: 400,
+      discount: 0,
     },
     {
       id: 'ecommerce',
@@ -76,6 +78,7 @@ export class Home {
       modalTitle: 'Plataformas Ecommerce',
       modalDescription: 'Tiendas online personalizadas con pagos, gestión de productos, pedidos y escalabilidad.',
       price: 1000,
+      discount: 0,
     },
   ];
 
@@ -183,12 +186,3 @@ export class Home {
     );
   }
 }
-
-
-
-
-
-
-
-
-

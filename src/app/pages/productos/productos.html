@@ -1,1 +1,19 @@
-<p>productos works!</p>
+<div class="container py-5">
+  
+  @if (products$ | async; as listaCargada) {
+    
+    <app-products-list 
+      [productsList]="listaCargada"
+      (onProductAdded)="agregarAlCarrito($event)">
+    </app-products-list>
+
+  } @else {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="text-muted mt-2">Cargando catálogo...</p>
+    </div>
+  }
+
+</div>

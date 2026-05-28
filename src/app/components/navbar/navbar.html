@@ -1,7 +1,8 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Soft Consultores</a>
+      <a class="navbar-brand fw-bold" routerLink="/home">Soft Consultores</a>
+      
       <button
         class="navbar-toggler"
         type="button"
@@ -15,30 +16,41 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto gap-lg-3">
+        <ul class="navbar-nav ms-auto align-items-center gap-lg-2">
+          
           <li class="nav-item">
-            <a class="nav-link" href="#features">Características</a>
+            <a class="nav-link" routerLink="/home" >Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">Nosotros</a>
+            <a class="nav-link" routerLink="/productos">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#pricing">Planes</a>
+            <a class="nav-link" routerLink="/tienda" >Tienda</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary ms-lg-3" href="#contact">Contacto</a>
+            <a class="nav-link" routerLink="/ofertas" >Ofertas</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" >Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/mi-cuenta">Mi Cuenta</a>
+          </li>
+          
+          <li class="nav-item ms-lg-2 my-2 my-lg-0 w-100 text-center">
+            <a class="btn btn-primary w-100" routerLink="/contacto" >Contacto</a>
+          </li>
+          
+          <li class="nav-item ms-lg-1 my-1 my-lg-0 w-100 text-center">
             <a
-              class="btn btn-outline-secondary ms-lg-2"
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal"
+              class="btn btn-outline-secondary w-100"
+              routerLink="/login"
               title="Ingresar / Registrarse"
             >
-              <i class="bi bi-person"></i>
+              <i class="bi bi-person"></i> <span class="d-lg-none ms-2">Ingresar</span>
             </a>
           </li>
+
         </ul>
       </div>
     </div>
