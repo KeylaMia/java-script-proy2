@@ -1,0 +1,25 @@
+.login-container {
+  min-height: calc(100vh - 70px); 
+  padding: 20px;
+}
+
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  border-top: 4px solid #0d6efd !important; 
+}
+
+
+.input-group-text {
+  border-color: #dee2e6;
+}
+
+.form-control:focus {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.text-xs {
+  font-size: 0.8rem;
+}
