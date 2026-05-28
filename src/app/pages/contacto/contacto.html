@@ -1,1 +1,86 @@
-<p>contacto works!</p>
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    
+    <div class="text-center col-md-8 mx-auto mb-4">
+      <h2 class="fw-bold">¿Necesitas un sistema único?</h2>
+      <p class="text-muted">Déjanos tus datos y cotizaremos un software a la medida de tu empresa.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      
+      <div class="col-lg-7">
+        <form class="row g-3 needs-validation" [class.was-validated]="contactValidated" novalidate (submit)="handleContactSubmit($event)">
+          
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Nombre Completo</label>
+            <input type="text" class="form-control" [(ngModel)]="nombre" name="txtNombre" required>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Correo Electrónico</label>
+            <input type="email" class="form-control" [(ngModel)]="correo" name="txtCorreo" required>
+          </div>
+          
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Celular / WhatsApp</label>
+            <input type="tel" class="form-control" [(ngModel)]="celular" name="txtCelular" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label small fw-bold">Presupuesto Estimado (USD)</label>
+            <input type="number" class="form-control" [(ngModel)]="presupuestoEstimado" name="numPresupuesto" required>
+          </div>
+          
+          <div class="col-md-12">
+            <label class="form-label small fw-bold">Requerimientos Especiales</label>
+            <textarea rows="4" class="form-control" [(ngModel)]="mensaje" name="txtMensaje" placeholder="Ej: Necesito un módulo de facturación extra..." required></textarea>
+          </div>
+          
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-primary px-5" [disabled]="enviando">
+              @if (enviando) {
+                <span class="spinner-border spinner-border-sm me-2"></span>Procesando...
+              } @else {
+                Enviar Solicitud
+              }
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm bg-white p-4 h-100">
+          <h5 class="fw-bold text-primary mb-3"><i class="bi bi-eye me-2"></i>Vista Previa</h5>
+          <hr class="mt-0 opacity-25">
+          
+          <p class="mb-2 small"><strong>Interesado:</strong> 
+            {{ nombre ? (nombre | uppercase) : 'Esperando nombre...' }}
+          </p>
+          
+          <p class="mb-2 small"><strong>Canal de contacto:</strong> 
+            {{ correo }} {{ celular ? ' / ' + celular : '' }}
+          </p>
+          
+          <p class="mb-2 small"><strong>Presupuesto Objetivo:</strong> 
+            <span class="text-success fw-bold">{{ presupuestoEstimado | currency:'USD':'symbol':'1.2-2' }}</span>
+          </p>
+          
+          <p class="mb-0 small text-muted italic"><strong>Detalle del sistema:</strong></p>
+          <div class="p-2 bg-light rounded border text-secondary small" style="min-height: 80px;">
+            {{ mensaje || 'Escribe tus requerimientos para ver la previsualización informática...' }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<app-modal
+  [isOpen]="modalAbierto"
+  [title]="modalConfig.title"
+  [message]="modalConfig.message"
+  [type]="modalConfig.type"
+  btnText="Entendido"
+  (onClose)="modalAbierto = false">
+</app-modal>

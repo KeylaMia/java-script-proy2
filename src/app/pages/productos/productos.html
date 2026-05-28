@@ -1,19 +1,32 @@
-<div class="container py-5">
-  
+<section class="container py-4">
+  <h2 class="fw-bold mb-4">Catálogo de Soluciones</h2>
+
   @if (products$ | async; as listaCargada) {
-    
     <app-products-list 
       [productsList]="listaCargada"
       (onProductAdded)="agregarAlCarrito($event)">
     </app-products-list>
-
   } @else {
-    <div class="text-center py-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Cargando...</span>
-      </div>
-      <p class="text-muted mt-2">Cargando catálogo...</p>
-    </div>
+    <app-loader [mensaje]="'Sincronizando catálogo de soluciones'"></app-loader>
   }
+</section>
 
-</div>
+<hr class="container my-5 opacity-25">
+
+<section class="bg-light py-2">
+  <app-carrito-compras-list
+    [cartItems]="itemsEnCarrito"
+    (onQuantityChanged)="manejarCambioCantidad($event)"
+    (onItemRemoved)="eliminarDelCarrito($event)"
+    (onCheckout)="procesarCheckout()">
+  </app-carrito-compras-list>
+</section>
+
+<app-modal
+  [isOpen]="modalAbierto"
+  [title]="modalConfig.title"
+  [message]="modalConfig.message"
+  [type]="modalConfig.type"
+  btnText="Entendido"
+  (onClose)="modalAbierto = false">
+</app-modal>
