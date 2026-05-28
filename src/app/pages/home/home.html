@@ -1,151 +1,103 @@
 <main>
-  <section class="hero bg-light">
+  <section class="hero bg-light py-5">
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-md-6">
-          <h1 class="display-5 fw-bold">Impulsa tu negocio hoy</h1>
-          <p class="lead">Creamos soluciones digitales modernas, rápidas y escalables.</p>
-          <a href="#contact" class="btn btn-primary btn-lg">Empezar ahora</a>
+          <span class="badge bg-primary mb-2">Soluciones Tecnológicas Listas</span>
+          <h1 class="display-4 fw-bold">Adquiere el Software que tu Negocio Necesita</h1>
+          <p class="lead text-muted">Soluciones digitales modernas, pre-construidas y escalables. Elige tu sistema, añádelo al carrito y automatiza tu empresa hoy.</p>
+          <div class="d-flex gap-3 mt-4">
+            <a routerLink="/tienda" class="btn btn-primary btn-lg px-4">Ir a la Tienda</a>
+            <a href="#solutions-section" class="btn btn-outline-secondary btn-lg px-4">Ver Catálogo</a>
+          </div>
         </div>
-
         <div class="col-md-6 text-center">
           <img
             src="https://informatica.imagenes.baifos-serviciosinformatica.com.es/2023/11/desarrollo-aplicaciones-moviles.png"
-            alt="Hero image"
-            class="img-fluid"
+            alt="E-commerce Software Solutions"
+            class="img-fluid rounded custom-hero-img"
           >
         </div>
       </div>
     </div>
   </section>
 
-  <section id="features" class="py-5">
+  <section id="features" class="py-5 bg-white">
     <div class="container">
-      <h2 class="text-center mb-3">Soluciones de Software a Medida</h2>
-      <p class="text-center text-muted mb-5">
-        Ayudamos a emprendedores y empresas a crecer con tecnología eficiente,
-        escalable y pensada para resultados reales.
-      </p>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Desarrollo a Medida</h3>
-              <p>Creamos aplicaciones web y sistemas personalizados según las necesidades de tu negocio.</p>
-            </div>
-          </article>
+      <div class="row g-4 text-center">
+        <div class="col-md-3">
+          <div class="p-3">
+            <i class="bi bi-lightning-charge text-primary fs-1 mb-2"></i>
+            <h3 class="h5 fw-bold">Despliegue Rápido</h3>
+            <p class="text-muted small">Tu software configurado e instalado en tiempo récord.</p>
+          </div>
         </div>
-
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Enfoque en Resultados</h3>
-              <p>No solo desarrollamos software, diseñamos soluciones que optimizan procesos y aumentan la productividad.</p>
-            </div>
-          </article>
+        <div class="col-md-3">
+          <div class="p-3">
+            <i class="bi bi-shield-check text-primary fs-1 mb-2"></i>
+            <h3 class="h5 fw-bold">Garantía Segura</h3>
+            <p class="text-muted small">Código robusto con altos estándares de seguridad y protección.</p>
+          </div>
         </div>
-
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Escalable y Seguro</h3>
-              <p>Construimos plataformas preparadas para crecer contigo, con altos estándares de seguridad y rendimiento.</p>
-            </div>
-          </article>
+        <div class="col-md-3">
+          <div class="p-3">
+            <i class="bi bi-arrow-up-right-circle text-primary fs-1 mb-2"></i>
+            <h3 class="h5 fw-bold">100% Escalable</h3>
+            <p class="text-muted small">Preparado para añadir módulos conforme tu empresa crezca.</p>
+          </div>
         </div>
-
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Tecnologías Modernas</h3>
-              <p>Trabajamos con stacks actuales como React, Node, APIs y cloud para soluciones rápidas y robustas.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Acompañamiento Continuo</h3>
-              <p>Te acompañamos desde la idea inicial hasta la implementación y el soporte posterior.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-4">
-          <article class="card h-100 shadow-sm feature-card">
-            <div class="card-body text-center">
-              <h3 class="h5">Ideal para Emprendedores</h3>
-              <p>Lanzamos MVPs rápidos y eficientes para validar tu idea y salir al mercado sin perder tiempo.</p>
-            </div>
-          </article>
+        <div class="col-md-3">
+          <div class="p-3">
+            <i class="bi bi-headset text-primary fs-1 mb-2"></i>
+            <h3 class="h5 fw-bold">Soporte Incluido</h3>
+            <p class="text-muted small">Acompañamiento post-venta directo por ingenieros UTP.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="py-5 bg-light">
+  <section id="solutions-section" class="py-5 bg-light">
     <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-md-8">
-          <h2>Sobre Nosotros</h2>
-          <p class="mt-4">
-            Somos un equipo de <strong>ingenieros de sistemas egresados de la Universidad Tecnológica del Perú</strong>,
-            unidos por una misma visión: hacer realidad las ideas y proyectos de emprendedores y empresas a través de
-            soluciones tecnológicas de alto impacto.
-          </p>
-          <p>
-            Nos juntamos con el objetivo de combinar nuestra <strong>pasión por la tecnología</strong>,
-            nuestro amplio interés por la innovación y nuestra <strong>experiencia profesional</strong>,
-            para desarrollar software que realmente aporte valor al negocio.
-          </p>
-          <p>
-            Creemos firmemente en el trabajo basado en <strong>valores y principios</strong> como la
-            responsabilidad, la transparencia y el compromiso, construyendo relaciones
-            de confianza con cada cliente y acompañándolos en su crecimiento digital.
-          </p>
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+          <h2 class="fw-bold mb-1">Nuestras Soluciones Destacadas</h2>
+          <p class="text-muted mb-0">Lleva tu negocio al siguiente nivel con precios transparentes.</p>
         </div>
+        <a routerLink="/tienda" class="btn btn-outline-primary d-none d-md-block">Ver todas las ofertas →</a>
       </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-3">Soluciones Tecnológicas</h2>
-      <p class="text-center text-muted mb-5">
-        Desarrollamos soluciones digitales para emprendedores y empresas
-        que buscan automatizar, crecer y escalar con tecnología.
-      </p>
 
       <div id="solutionsCarouselMobile" class="carousel slide d-md-none solutions-mobile" data-bs-ride="carousel">
         <div class="carousel-inner">
           @for (solution of solutions; track solution.id; let first = $first) {
             <div class="carousel-item" [class.active]="first">
-              <div class="card shadow-sm text-center mx-2">
-                <div class="card-icon"><i class="bi" [class]="solution.icon"></i></div>
-                <div class="card-body">
-                  <h5>{{ solution.title }}</h5>
-                  <p>{{ solution.cardDescription }}</p>
-                  <button
-                    class="btn btn-primary w-100"
-                    data-bs-toggle="modal"
-                    data-bs-target="#solutionsModal"
-                    (click)="selectSolution(solution)"
-                  >
-                    Más info
-                  </button>
+              <div class="card shadow-sm border-0 h-100 mx-2">
+                <div class="card-body text-center p-4">
+                  <div class="fs-1 text-primary mb-3"><i class="bi" [class]="solution.icon"></i></div>
+                  <h4 class="fw-bold">{{ solution.title }}</h4>
+                  <p class="text-muted small">{{ solution.cardDescription }}</p>
+                  <div class="my-3">
+                    <span class="text-muted text-decoration-line-through small">USD {{ (solution.price * 1.2) | number:'1.0-0' }}</span>
+                    <h3 class="text-primary fw-bold mb-0">USD {{ solution.price | number:'1.2-2' }}</h3>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="selectSolution(solution); addToCart()">
+                      <i class="bi bi-cart-plus me-2"></i>Añadir al Carrito
+                    </button>
+                    <button class="btn btn-link btn-sm text-secondary" data-bs-toggle="modal" data-bs-target="#solutionsModal" (click)="selectSolution(solution)">
+                      Detalles del sistema
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           }
         </div>
-
         <button class="carousel-control-prev" type="button" data-bs-target="#solutionsCarouselMobile" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+          <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#solutionsCarouselMobile" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
+          <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
         </button>
       </div>
 
@@ -155,20 +107,24 @@
             <div class="carousel-item" [class.active]="first">
               <div class="row g-4 justify-content-center">
                 @for (solution of slide; track solution.id) {
-                  <div class="col-lg-4">
-                    <div class="card h-100 shadow-sm text-center">
-                      <div class="card-icon"><i class="bi" [class]="solution.icon"></i></div>
-                      <div class="card-body">
-                        <h5>{{ solution.title }}</h5>
-                        <p>{{ solution.cardDescription }}</p>
-                        <button
-                          class="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#solutionsModal"
-                          (click)="selectSolution(solution)"
-                        >
-                          Más info
-                        </button>
+                  <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 card-hover">
+                      <div class="card-body p-4 d-flex flex-column text-center">
+                        <div class="fs-1 text-primary mb-3"><i class="bi" [class]="solution.icon"></i></div>
+                        <h5 class="fw-bold">{{ solution.title }}</h5>
+                        <p class="text-muted small flex-grow-1">{{ solution.cardDescription }}</p>
+                        <div class="my-3">
+                          <span class="text-muted text-decoration-line-through small">USD {{ (solution.price * 1.2) | number:'1.0-0' }}</span>
+                          <h4 class="text-primary fw-bold">USD {{ solution.price | number:'1.2-2' }}</h4>
+                        </div>
+                        <div class="d-grid gap-2 mt-auto">
+                          <button class="btn btn-primary" (click)="selectSolution(solution); addToCart()">
+                            <i class="bi bi-cart-plus me-2"></i>Añadir
+                          </button>
+                          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#solutionsModal" (click)="selectSolution(solution)">
+                            Ver detalles
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -177,156 +133,85 @@
             </div>
           }
         </div>
-
         <button class="carousel-control-prev" type="button" data-bs-target="#solutionsCarouselDesktop" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+          <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#solutionsCarouselDesktop" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
+          <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
         </button>
       </div>
     </div>
   </section>
 
-  <div class="modal fade" id="solutionsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="solutionsModalTitle">{{ selectedSolution.modalTitle }}</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
+  <section class="bg-primary text-white py-4 text-center">
+    <div class="container">
+      <h5 class="mb-1 fw-bold">🔥 ¡Promoción por Lanzamiento!</h5>
+      <p class="mb-0 small">Lleva 2 o más soluciones de software a tu carrito y recibe un <strong>15% de descuento automático</strong> en tu orden total.</p>
+    </div>
+  </section>
 
-        <div class="modal-body">
-          <p id="solutionsModalDescription">{{ selectedSolution.modalDescription }}</p>
-          <hr>
-          <p class="fw-bold mb-1">Inversión aproximada:</p>
-          <p class="fs-5 text-primary">Desde USD 300 - 2,000+</p>
-          <p class="small text-muted">
-            El costo final puede variar según el nivel de personalización,
-            integraciones adicionales, funcionalidades específicas o servicios
-            complementarios solicitados.
-          </p>
+  <section id="about" class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <h2 class="fw-bold">Respaldo de Profesionales UTP</h2>
+          <p class="mt-3 text-muted">Somos un equipo de ingenieros de sistemas egresados de la <strong>Universidad Tecnológica del Perú</strong>. Unimos nuestra experiencia corporativa para empaquetar plataformas de software comerciales de primer nivel.</p>
+          <p class="text-muted">No compras plantillas genéricas; adquieres arquitecturas limpias, escalables y con código garantizado bajo altos estándares técnicos.</p>
         </div>
-
-        <div class="modal-footer justify-content-between">
-          <button class="btn btn-outline-primary" (click)="addToCart()">Agregar al carrito</button>
-          <a href="#contact" class="btn btn-primary">Solicitar cotización</a>
+        <div class="col-md-6">
+          <div class="p-4 bg-light rounded border border-primary border-start-4">
+            <h5 class="fw-bold text-primary"><i class="bi bi-patch-check-fill me-2"></i>¿Qué incluye cada compra?</h5>
+            <ul class="list-unstyled mt-3 mb-0 lh-lg text-secondary">
+              <li><i class="bi bi-check2-circle text-success me-2"></i> Instalación en tu servidor / hosting.</li>
+              <li><i class="bi bi-check2-circle text-success me-2"></i> Manuales de administración de datos.</li>
+              <li><i class="bi bi-check2-circle text-success me-2"></i> Licencia perpetua de uso comercial.</li>
+              <li><i class="bi bi-check2-circle text-success me-2"></i> 3 meses de soporte técnico ante fallos.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <section id="contact" class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-4">Contáctanos</h2>
-      <form
-        id="contactForm"
-        class="row g-3 justify-content-center needs-validation"
-        [class.was-validated]="contactValidated"
-        novalidate
-        (submit)="handleContactSubmit($event, name.value, email.value, phone.value)"
-      >
-        <div class="col-md-5">
-          <input #name type="text" class="form-control" id="name" placeholder="Nombre completo" required>
-          <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
-        </div>
-
-        <div class="col-md-5">
-          <input #email type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
-          <div class="invalid-feedback">Ingresa un correo válido.</div>
-        </div>
-
-        <div class="col-md-5">
-          <input #phone type="tel" class="form-control" id="phone" placeholder="Celular" required>
-          <div class="invalid-feedback">Ingresa un número de celular.</div>
-        </div>
-
-        <div class="col-md-10">
-          <textarea
-            rows="4"
-            class="form-control"
-            id="message"
-            placeholder="Cuéntanos brevemente sobre tu proyecto"
-            required
-          ></textarea>
-          <div class="invalid-feedback">El mensaje es obligatorio.</div>
-        </div>
-
-        <div class="col-md-10 text-center">
-          <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje</button>
-        </div>
+      <div class="text-center col-md-8 mx-auto mb-4">
+        <h2 class="fw-bold">¿Necesitas cambios específicos o un sistema único?</h2>
+        <p class="text-muted">Si nuestras soluciones listas para usar no se adaptan al 100% a tu flujo de trabajo, déjanos un mensaje y cotizaremos un desarrollo a medida.</p>
+      </div>
+      <form id="contactForm" class="row g-3 justify-content-center needs-validation" [class.was-validated]="contactValidated" novalidate (submit)="handleContactSubmit($event, name.value, email.value, phone.value)">
+        <div class="col-md-5"><input #name type="text" class="form-control" placeholder="Nombre completo" required></div>
+        <div class="col-md-5"><input #email type="email" class="form-control" placeholder="Correo electrónico" required></div>
+        <div class="col-md-5"><input #phone type="tel" class="form-control" placeholder="Celular" required></div>
+        <div class="col-md-10"><textarea rows="4" class="form-control" placeholder="Cuéntanos qué funcionalidades extras necesitas..." required></textarea></div>
+        <div class="col-md-10 text-center"><button type="submit" class="btn btn-primary px-5">Solicitar Cotización Personalizada</button></div>
       </form>
-      @if (successMessage) {
-        <div id="successMessage" class="alert alert-success mt-4 text-center" [innerHTML]="successMessage"></div>
-      }
+      @if (successMessage) { <div id="successMessage" class="alert alert-success mt-4 text-center" [innerHTML]="successMessage"></div> }
     </div>
   </section>
 </main>
 
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="solutionsModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Acceso de Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="solutionsModalTitle">{{ selectedSolution.modalTitle }}</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body">
-        <form id="registroForm" (submit)="registerUser($event, nombre.value, emailRegister.value, password.value)">
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input #nombre type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
-          </div>
-          <div class="mb-3">
-            <label for="emailRegister" class="form-label">Correo electrónico</label>
-            <input #emailRegister type="email" class="form-control" id="emailRegister" placeholder="nombre@ejemplo.com" required>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input #password type="password" class="form-control" id="password" required>
-          </div>
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-          </div>
-        </form>
-
-        <hr>
-        @if (users.length) {
-          <div id="divUsuariosRegistrados">
-            <h3>Usuarios Registrados</h3>
-            <ul id="listaUsuarios" class="list-group">
-              @for (user of users; track user.email) {
-                <li class="list-group-item">{{ user.nombre }} - {{ user.email }}</li>
-              }
-            </ul>
-          </div>
-        }
+      <div class="modal-body p-4">
+        <p class="text-secondary" id="solutionsModalDescription">{{ selectedSolution.modalDescription }}</p>
+        <div class="bg-light p-3 rounded my-3">
+          <p class="fw-bold mb-1 text-muted small text-uppercase">Inversión Final del Software:</p>
+          <h3 class="text-primary fw-bold mb-0">USD {{ selectedSolution.price | number:'1.2-2' }}</h3>
+          <span class="text-success small fw-medium"><i class="bi bi-tag-fill me-1"></i>Pago único, sin mensualidades obligatorias</span>
+        </div>
+      </div>
+      <div class="modal-footer bg-light justify-content-between">
+        <button class="btn btn-primary px-4" (click)="addToCart()" data-bs-dismiss="modal">
+          <i class="bi bi-cart-plus me-2"></i>Añadir al carrito
+        </button>
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-</div>
-
-<div id="cartFloating" (click)="toggleCart()">
-  <i class="bi bi-cart3"></i>
-  <span id="cartCount">{{ cart.length }}</span>
-</div>
-
-<div id="cartPanel" class="cart-panel" [class.show]="cartVisible">
-  <h5>Carrito de compras</h5>
-  <div id="cartItems">
-    @for (item of cart; track $index; let index = $index) {
-      <div class="cart-item">
-        <strong>{{ item.title }}</strong><br>
-        <span>USD {{ item.price }}</span>
-        <button class="btn btn-sm btn-danger float-end" (click)="removeItem(index)">x</button>
-      </div>
-    }
-  </div>
-  <hr>
-  <div id="cartTotal">
-    <p class="mb-1">Subtotal: USD {{ cartSubtotal | number: '1.2-2' }}</p>
-    <p class="mb-1 text-success">Descuento: -USD {{ cartDiscount | number: '1.2-2' }}</p>
-    <hr>
-    <p class="fw-bold fs-5">Total: USD {{ cartTotal | number: '1.2-2' }}</p>
-  </div>
-  <button class="btn btn-success w-100" (click)="finalizePurchase()">Finalizar Compra</button>
 </div>
