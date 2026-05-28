@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router'; 
 
 interface DocumentoContable {
   id: string;
@@ -10,7 +10,6 @@ interface DocumentoContable {
   estado: 'Pagado' | 'Vencido' | 'Procesando';
   fechaEmision: string;
 }
-
 
 interface PerfilCliente {
   nombre: string;
@@ -34,13 +33,19 @@ export class Dashboard implements OnInit {
   creditosDisponibles: number = 120.00; 
   totalSolucionesContratadas: number = 3;
 
-
   clientePerfil!: PerfilCliente;
-
- 
   documentos: DocumentoContable[] = [];
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
+    const tokenSession = localStorage.getItem('userSession');
+
+    if (!tokenSession) {
+      this.router.navigate(['/home']);
+      return;
+    }
+
     this.clientePerfil = {
       nombre: 'Carlos Mendoza Ramos',
       empresa: 'Mendoza Tech Solutions S.A.C.',
@@ -49,7 +54,6 @@ export class Dashboard implements OnInit {
       telefono: '+51 987 654 321',
       miembroDesde: 'Febrero 2025'
     };
-
 
     this.documentos = [
       { id: 'FFF1-00412', tipo: 'Factura', concepto: 'Licencia Anual ERP Soft Gestión', monto: 1500.00, estado: 'Pagado', fechaEmision: '15/05/2026' },

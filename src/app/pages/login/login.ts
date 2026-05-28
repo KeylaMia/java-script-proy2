@@ -43,6 +43,8 @@ export class Login {
       if (this.correo === 'cliente@tech.com' && this.contrasena === '123456') {
         console.log('¡Acceso concedido!');
         
+        localStorage.setItem('userSession', JSON.stringify({ token: 'xyz123', usuario: this.correo }));
+        
         this.router.navigate(['/dashboard']);
       } else {
         this.errorLogin = 'El correo electrónico o la contraseña son incorrectos. Prueba con cliente@tech.com y 123456';
