@@ -46,14 +46,20 @@ export class Dashboard implements OnInit {
       return;
     }
 
-    this.clientePerfil = {
-      nombre: 'Carlos Mendoza Ramos',
-      empresa: 'Mendoza Tech Solutions S.A.C.',
-      rucOrDni: '20601234567',
-      correo: 'carlos.mendoza@techsolutions.com',
-      telefono: '+51 987 654 321',
-      miembroDesde: 'Febrero 2025'
-    };
+    const clienteData = localStorage.getItem('clienteData');
+
+if (clienteData) {
+  const cliente = JSON.parse(clienteData);
+
+  this.clientePerfil = {
+    nombre: cliente.perfil.nombre,
+    empresa: cliente.perfil.empresa,
+    rucOrDni: cliente.perfil.rucOrDni,
+    correo: cliente.correo,
+    telefono: cliente.perfil.telefono,
+    miembroDesde: cliente.perfil.miembroDesde
+  };
+}
 
     this.documentos = [
       { id: 'FFF1-00412', tipo: 'Factura', concepto: 'Licencia Anual ERP Soft Gestión', monto: 1500.00, estado: 'Pagado', fechaEmision: '15/05/2026' },
