@@ -1,1 +1,226 @@
-<p>mi-cuenta works!</p>
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+      <h2 class="fw-bold text-dark mb-1">Mi Cuenta</h2>
+      <p class="text-muted mb-0">Administra tus datos de cliente y credenciales de acceso.</p>
+    </div>
+
+  </div>
+
+  @if (mensajeExito) {
+    <div class="alert alert-success border-0 shadow-sm">
+      <i class="bi bi-check-circle-fill me-2"></i>
+      {{ mensajeExito }}
+    </div>
+  }
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm rounded-3 h-100">
+        <div class="card-body p-4 text-center">
+          <div class="bg-dark text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
+               style="width: 78px; height: 78px;">
+            <i class="bi bi-building fs-2"></i>
+          </div>
+
+          <h5 class="fw-bold text-dark mb-1">{{ perfil.empresa | uppercase }}</h5>
+          <p class="text-muted small mb-3">{{ perfil.nombre | titlecase }}</p>
+
+          <div class="border-top pt-3 text-start">
+            <p class="mb-2 small">
+              <span class="text-muted d-block">Correo</span>
+              <strong>{{ perfil.correo }}</strong>
+            </p>
+
+            <p class="mb-2 small">
+              <span class="text-muted d-block">RUC/DNI</span>
+              <strong>{{ perfil.rucOrDni }}</strong>
+            </p>
+
+            <p class="mb-0 small">
+              <span class="text-muted d-block">Cliente desde</span>
+              <strong>{{ perfil.miembroDesde }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h5 class="fw-bold text-dark mb-0">Datos del Cliente</h5>
+            </div>
+
+            @if (!editandoDatos) {
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="activarEdicionDatos()">
+                <i class="bi bi-pencil-square me-1"></i>
+                Editar
+              </button>
+            }
+          </div>
+
+          <form (ngSubmit)="guardarDatos()">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">Nombre completo</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                  [(ngModel)]="perfil.nombre"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">Empresa</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="empresa"
+                  [(ngModel)]="perfil.empresa"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">RUC o DNI</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="rucOrDni"
+                  [(ngModel)]="perfil.rucOrDni"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">Correo electrónico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="correo"
+                  [(ngModel)]="perfil.correo"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">Teléfono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="telefono"
+                  [(ngModel)]="perfil.telefono"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label small fw-bold text-muted">Miembro desde</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="miembroDesde"
+                  [(ngModel)]="perfil.miembroDesde"
+                  [disabled]="!editandoDatos"
+                  required>
+              </div>
+            </div>
+
+            @if (editandoDatos) {
+              <div class="d-flex gap-2 justify-content-end mt-4">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelarEdicionDatos()">
+                  Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-save me-1"></i>
+                  Guardar cambios
+                </button>
+              </div>
+            }
+          </form>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h5 class="fw-bold text-dark mb-0">Seguridad</h5>
+              <small class="text-muted">Actualiza tu contraseña de acceso.</small>
+            </div>
+
+            @if (!editandoPassword) {
+              <button type="button" class="btn btn-outline-dark btn-sm" (click)="activarEdicionPassword()">
+                Cambiar contraseña
+              </button>
+            }
+          </div>
+
+          @if (errorPassword) {
+            <div class="alert alert-danger border-0 small">
+              <i class="bi bi-exclamation-circle-fill me-2"></i>
+              {{ errorPassword }}
+            </div>
+          }
+
+          @if (editandoPassword) {
+            <form (ngSubmit)="guardarPassword()">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label small fw-bold text-muted">Contraseña actual</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="passwordActual"
+                    [(ngModel)]="passwordActual"
+                    required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-bold text-muted">Nueva contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="nuevaPassword"
+                    [(ngModel)]="nuevaPassword"
+                    required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label small fw-bold text-muted">Confirmar contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="confirmarPassword"
+                    [(ngModel)]="confirmarPassword"
+                    required>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 justify-content-end mt-4">
+                <button type="button" class="btn btn-outline-secondary" (click)="cancelarEdicionPassword()">
+                  Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-dark">
+                  Actualizar contraseña
+                </button>
+              </div>
+            </form>
+          } @else {
+            <div class="alert alert-light border mb-0">
+              <i class="bi bi-shield-lock me-2 text-primary"></i>
+             Manten tu cuentita segura.
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

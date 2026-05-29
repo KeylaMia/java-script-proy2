@@ -3,6 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+interface ClienteData {
+  correo: string;
+  contrasena: string;
+  perfil: {
+    nombre: string;
+    empresa: string;
+    rucOrDni: string;
+    telefono: string;
+    miembroDesde: string;
+  };
+}
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -11,7 +23,6 @@ import { Router } from '@angular/router';
   styleUrl: './login.css',
 })
 export class Login {
-
   correo: string = '';
   contrasena: string = '';
 
@@ -23,7 +34,7 @@ export class Login {
 
   handleLoginSubmit(event: Event): void {
     event.preventDefault();
-    this.errorLogin = ''; 
+    this.errorLogin = '';
 
     const form = event.target as HTMLFormElement;
 
@@ -35,18 +46,51 @@ export class Login {
     this.cargando = true;
     this.loginValidated = false;
 
-    console.log('Intentando iniciar sesión con:', { correo: this.correo, contrasena: this.contrasena });
+    console.log('Intentando iniciar sesión con:', {
+      correo: this.correo,
+      contrasena: this.contrasena
+    });
 
     setTimeout(() => {
       this.cargando = false;
-      if (this.correo === 'cliente@tech.com' && this.contrasena === '123456') {
-        console.log('¡Acceso concedido!');
-        
-        localStorage.setItem('userSession', JSON.stringify({ token: 'xyz123', usuario: this.correo }));
-        
+
+      const clienteData = localStorage.getItem('clienteData');
+
+      let correoValido = 'cliente@tech.com';
+      let contrasenaValida = '123456';
+
+      if (clienteData) {
+        const cliente: ClienteData = JSON.parse(clienteData);
+        correoValido = cliente.correo;
+        contrasenaValida = cliente.contrasena;
+      }
+
+      if (this.correo === correoValido && this.contrasena === contrasenaValida) {
+        localStorage.setItem('userSession', JSON.stringify({
+          token: 'xyz123',
+          usuario: this.correo
+        }));
+
+        if (!clienteData) {
+          const clienteInicial: ClienteData = {
+            correo: this.correo,
+            contrasena: this.contrasena,
+            perfil: {
+              nombre: 'Carlos Mendoza Ramos',
+              empresa: 'Mendoza Tech Solutions S.A.C.',
+              rucOrDni: '20601234567',
+              telefono: '+51 987 654 321',
+              miembroDesde: 'Febrero 2025'
+            }
+          };
+
+          localStorage.setItem('clienteData', JSON.stringify(clienteInicial));
+        }
+
+        console.log('Acceso concedido');
         this.router.navigate(['/dashboard']);
       } else {
-        this.errorLogin = 'El correo electrónico o la contraseña son incorrectos. Prueba con cliente@tech.com y 123456';
+        this.errorLogin = 'El correo electrónico o la contraseña son incorrectos.';
       }
     }, 2000);
   }
