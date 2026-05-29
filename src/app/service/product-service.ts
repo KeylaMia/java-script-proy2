@@ -22,7 +22,7 @@ export interface Product {
 })
 
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/products';
+  private apiUrl = 'https://json-servidor.onrender.com/products';
 
   constructor(private http: HttpClient) {}
 
