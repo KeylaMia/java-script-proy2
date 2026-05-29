@@ -15,7 +15,6 @@ export class Login {
   correo: string = '';
   contrasena: string = '';
 
-  // Estados de control visual
   loginValidated: boolean = false;
   cargando: boolean = false;
   errorLogin: string = '';
