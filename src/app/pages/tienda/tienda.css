@@ -1,0 +1,15 @@
+.gallery-card {
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.gallery-card .bg-dark {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

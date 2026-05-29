@@ -1,31 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductService } from '../../service/product-service';
-import { Product } from '../../service/product-service';
+import { ProductService, Product } from '../../service/product-service';
 import { ProductsList } from '../../components/products-list/products-list';
-import { OnInit } from '@angular/core';
-import { Solution } from '../home/home';
 
 @Component({
   selector: 'app-tienda',
   standalone: true,
-  imports: [CommonModule, ProductsList ],
+  imports: [CommonModule, ProductsList],
   templateUrl: './tienda.html',
   styleUrl: './tienda.css',
 })
 export class Tienda implements OnInit {
+  
   products: Product[] = [];
-  constructor(private productService: ProductService) {}
+
+  constructor(private productService: ProductService, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
-      next: (data) => this.products = data,
-      error: (err) => console.error('Error cargando el catálogo', err)
+      next: (data: any) => {
+        if (data && data.products) {
+          this.products = data.products;
+        } else if (Array.isArray(data)) {
+          this.products = data;
+        }
+        this.cdRef.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error cargando el catálogo de Soft Consultores:', err);
+      }
     });
   }
 
-  agregarAlCarritoGlobal(producto: Solution): void {
+  agregarAlCarritoGlobal(producto: Product): void {
     console.log('Agregando al carrito desde la tienda:', producto.title);
   }
-
 }

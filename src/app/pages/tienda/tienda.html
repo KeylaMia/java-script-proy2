@@ -1,10 +1,105 @@
-<div class="container py-5">
-  <div class="text-center mb-5">
-    <h1 class="fw-bold text-dark">Nuestra Tienda Digital</h1>
-    <p class="text-muted">Explora nuestro catálogo completo de más de 50 soluciones de software listas para implementar.</p>
+<div class="container py-4">
+  
+  <div class="row g-4 align-items-center mb-5 bg-light p-4 rounded-3 shadow-sm border">
+    <div class="col-lg-7">
+      <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">Sede Central</span>
+      <h1 class="fw-bold text-dark mb-3">Soft Consultores - Tienda Digital</h1>
+      <p class="text-muted lead">
+        Explora nuestro catálogo de soluciones de software listas para potenciar tu negocio. 
+        También puedes visitarnos en nuestras instalaciones físicas para recibir asesoría personalizada de nuestros ingenieros.
+      </p>
+      
+      <div class="row g-3 mt-2">
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt-fill text-danger fs-4"></i>
+            <div>
+              <h6 class="mb-0 fw-bold">Dirección</h6>
+              <small class="text-muted">Av. Principal 123, San Isidro, Lima</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-clock-fill text-warning fs-4"></i>
+            <div>
+              <h6 class="mb-0 fw-bold">Horario de Atención</h6>
+              <small class="text-muted">Lun a Vie: 9:00 AM - 6:00 PM</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-5">
+      <div class="card border-0 shadow-sm overflow-hidden rounded-3">
+        <div class="ratio ratio-16x9" style="min-height: 250px;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.373977507315!2d-77.0298716!3d-12.0865582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA1JzExLjYiUyA3N8KwMDEnNDcuNSJX!5e0!3m2!1ses-419!2spe!4v1710000000000!5m2!1ses-419!2spe" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="card-footer bg-white text-center py-2">
+          <a href="https://maps.google.com" target="_blank" class="btn btn-sm btn-outline-danger rounded-pill">
+            <i class="bi bi-signpost-2 me-1"></i>¿Cómo llegar con GPS?
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <app-products-list 
-    [productsList]="products">
-  </app-products-list>
+  <div class="mb-5">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <h3 class="fw-bold text-dark mb-0">Conoce Nuestro Ecosistema</h3>
+      <span class="text-muted">| El equipo detrás del código</span>
+    </div>
+    
+    <div class="row g-3">
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative gallery-card">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" 
+               alt="Oficina Soft Consultores - Área de Desarrollo" class="img-fluid object-fit-cover h-100" style="min-height: 200px;">
+          <div class="p-3 bg-dark text-white text-center bg-opacity-75 small">Área de Desarrollo e IA</div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative gallery-card">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80" 
+               alt="Oficina Soft Consultores - Sala de Reuniones" class="img-fluid object-fit-cover h-100" style="min-height: 200px;">
+          <div class="p-3 bg-dark text-white text-center bg-opacity-75 small">Sala de Innovación y UX</div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative gallery-card">
+          <img src="https://dipay.com.mx/hs-fs/hubfs/5.jpg?width=3200&height=1800&name=5.jpg" 
+               alt="Oficina Soft Consultores - Zona de Descanso" class="img-fluid object-fit-cover h-100" style="min-height: 200px;">
+          <div class="p-3 bg-dark text-white text-center bg-opacity-75 small">Zona de Coworking & Café</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5 opacity-25">
+
+  <div>
+    <h2 class="fw-bold text-dark mb-4"><i class="bi bi-grid-3x3-gap me-2 text-primary"></i>Catálogo de Soluciones Disponibles</h2>
+    
+    @if (products.length > 0) {
+      <app-products-list 
+        [productsList]="products"
+        (onProductAdded)="agregarAlCarritoGlobal($event)">
+      </app-products-list>
+    } @else {
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando catálogo...</span>
+        </div>
+        <p class="text-muted mt-2">Sincronizando productos de Soft Consultores...</p>
+      </div>
+    }
+  </div>
+
 </div>

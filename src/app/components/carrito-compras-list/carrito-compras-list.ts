@@ -1,27 +1,38 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Product } from '../../service/product-service';
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import { RouterModule } from '@angular/router'; 
+import { CartService, CartItem } from '../../service/cart-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-carrito-compras-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './carrito-compras-list.html',
   styleUrl: './carrito-compras-list.css',
 })
+export class CarritoComprasList implements OnInit, OnDestroy {
+  cartItems: CartItem[] = [];
+  private cartSubscription!: Subscription;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartSubscription = this.cartService.cartItems$.subscribe({
+      next: (items) => {
+        this.cartItems = items;
+      },
+      error: (err) => console.error('Error al recuperar el carrito:', err)
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
+  }
 
 
-export class CarritoComprasList {
-  @Input() cartItems: CartItem[] = [];
-  @Output() onCheckout = new EventEmitter<void>();
-  @Output() onQuantityChanged = new EventEmitter<{ productId: string | number, newQuantity: number }>();
-  @Output() onItemRemoved = new EventEmitter<string | number>();
-  
   get subtotal(): number {
     return this.cartItems.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
   }
@@ -39,21 +50,17 @@ export class CarritoComprasList {
     return this.subtotal - this.totalDiscount;
   }
 
-updateQuantity(productId: string | number, currentQuantity: number, change: number): void {
-  const newQuantity = currentQuantity + change;
-  if (newQuantity > 0) {
-    this.onQuantityChanged.emit({ productId, newQuantity });
+  updateQuantity(productId: string | number, currentQuantity: number, change: number): void {
+    const newQuantity = currentQuantity + change;
+    this.cartService.updateQuantity(productId, newQuantity);
   }
-}
 
-removeItem(productId: string | number): void {
-  this.onItemRemoved.emit(productId);
-}
+  removeItem(productId: string | number): void {
+    this.cartService.removeItem(productId);
+  }
 
   procederAlPago(): void {
-    this.onCheckout.emit();
+    alert('Redireccionando de manera segura a la pasarela de pago...');
+    this.cartService.clearCart();
   }
 }
-
-
-

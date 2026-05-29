@@ -58,8 +58,7 @@
   } @else {
     @if (productosFiltrados.length > 0) {
       <app-products-list 
-        [productsList]="productosFiltrados"
-        (onProductAdded)="agregarAlCarrito($event)">
+        [productsList]="productosFiltrados">
       </app-products-list>
     } @else {
       <div class="text-center py-5 bg-white rounded border shadow-sm">
@@ -73,16 +72,6 @@
 
 <hr class="container my-5 opacity-25">
 
-<section class="bg-light py-2">
-  <div class="container">
-    <app-carrito-compras-list
-      [cartItems]="itemsEnCarrito"
-      (onQuantityChanged)="manejarCambioCantidad($event)"
-      (onItemRemoved)="eliminarDelCarrito($event)"
-      (onCheckout)="procesarCheckout()">
-    </app-carrito-compras-list>
-  </div>
-</section>
 
 <app-modal
   [isOpen]="modalAbierto"

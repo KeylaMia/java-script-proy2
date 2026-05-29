@@ -8,6 +8,7 @@ import { NotFound } from './pages/not-found/not-found';
 import { Ofertas } from './pages/ofertas/ofertas';
 import { Productos } from './pages/productos/productos';
 import { Tienda } from './pages/tienda/tienda';
+import { CarritoComprasList } from './components/carrito-compras-list/carrito-compras-list';
 
 export const routes: Routes = [
   { 
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'ofertas', component: Ofertas },
   { path: 'productos', component: Productos },
   { path: 'tienda', component: Tienda },
+  { path: 'carrito-compras', component: CarritoComprasList },
   { path: '404', component: NotFound },
   { 
     path: '**', 
