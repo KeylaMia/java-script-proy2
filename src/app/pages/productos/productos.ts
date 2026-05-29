@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../service/product-service';
@@ -27,7 +27,7 @@ export class Productos implements OnInit {
   modalConfig = { title: '', message: '', type: 'info' as 'success' | 'danger' };
   itemsEnCarrito: CartItem[] = [];
   
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.estaCargando = true;
@@ -42,6 +42,7 @@ export class Productos implements OnInit {
         
         this.productosFiltrados = [...this.productosBase];
         this.estaCargando = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Error cargando la API:', err);
