@@ -5,12 +5,12 @@ import { ProductService, Product } from '../../service/product-service';
 import { ProductsList } from '../../components/products-list/products-list';
 import { Loader } from '../../components/loader/loader'; 
 import { Modal } from '../../components/modal/modal';
-import { CarritoComprasList, CartItem } from '../../components/carrito-compras-list/carrito-compras-list';
+
 
 @Component({
   selector: 'app-ofertas',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProductsList, Loader, Modal, CarritoComprasList],
+  imports: [CommonModule, FormsModule, ProductsList, Loader, Modal],
   templateUrl: './ofertas.html',
   styleUrl: './ofertas.css',
 })
@@ -25,7 +25,6 @@ export class Ofertas implements OnInit {
 
   modalAbierto: boolean = false;
   modalConfig = { title: '', message: '', type: 'info' as 'success' | 'danger' };
-  itemsEnCarrito: CartItem[] = [];
 
   constructor(private productService: ProductService, private cdr: ChangeDetectorRef) {}
 
@@ -77,39 +76,6 @@ export class Ofertas implements OnInit {
     this.aplicarFiltros();
   }
 
-  agregarAlCarrito(product: Product): void {
-    const itemExistente = this.itemsEnCarrito.find(item => item.product.id === product.id);
-    if (itemExistente) {
-      itemExistente.quantity += 1;
-    } else {
-      this.itemsEnCarrito.push({ product, quantity: 1 });
-    }
 
-    this.modalConfig = {
-      title: '¡Aviso de Promoción!',
-      message: `Añadiste "${product.title}" aprovechando su precio especial de descuento.`,
-      type: 'success'
-    };
-    this.modalAbierto = true;
-  }
 
-  manejarCambioCantidad(evento: { productId: string | number, newQuantity: number }): void {
-    const item = this.itemsEnCarrito.find(i => i.product.id === evento.productId);
-    if (item) {
-      item.quantity = evento.newQuantity;
-    }
-  }
-
-  eliminarDelCarrito(productId: string | number): void {
-    this.itemsEnCarrito = this.itemsEnCarrito.filter(item => item.product.id !== productId);
-  }
-
-  procesarCheckout(): void {
-    this.modalConfig = {
-      title: 'Procesando Carrito de Ofertas',
-      message: 'Redireccionando de manera segura para aplicar tus tarifas rebajadas...',
-      type: 'success'
-    };
-    this.modalAbierto = true;
-  }
 }

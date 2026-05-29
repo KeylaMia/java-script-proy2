@@ -1,11 +1,40 @@
 <div class="card h-100 shadow-sm border-0 product-card-hover">
   <div class="card-body p-4 text-center d-flex flex-column">
-    <div class="fs-1 text-primary mb-3">
-      <i class="bi" [class]="item.icon"></i>
+    <div class="mb-2">
+      <span class="badge rounded-pill px-3 py-1.5 fw-medium"
+            [ngClass]="{
+              'bg-primary-subtle text-primary': item.category === 'marketing',
+              'bg-success-subtle text-success': item.category === 'inventarios',
+              'bg-info-subtle text-info': item.category === 'ecommerce',
+              'bg-warning-subtle text-warning-emphasis': item.category === 'gestion',
+              'bg-danger-subtle text-danger': item.category === 'seguridad',
+              'bg-secondary-subtle text-secondary': item.category === 'analitica'
+            }">
+        {{ item.category | titlecase }}
+      </span>
+    </div>
+    <div class="mb-3 d-flex justify-content-center align-items-center" style="height: 80px;">
+      @if (item.imagenUrl) {
+        <img 
+          [src]="item.imagenUrl" 
+          [alt]="item.title" 
+          class="img-fluid object-fit-contain" 
+          style="max-height: 80px; width: auto;">
+      } @else {
+        <div class="fs-1 text-primary">
+          <i class="bi" [class]="item.icon"></i>
+        </div>
+      }
     </div>
     
     <h5 class="fw-bold">{{ item.title }}</h5>
-    <p class="text-muted small flex-grow-1">{{ item.cardDescription }}</p>
+    <p class="text-muted small flex-grow-1 mb-2">{{ item.cardDescription }}</p>
+
+    <div class="mb-2 d-flex justify-content-center align-items-center gap-1">
+      <span class="text-success small fw-semibold" style="font-size: 0.85rem;">
+        <i class="bi bi-infinity me-1"></i>Stock: Ilimitado
+      </span>
+    </div>
 
     <div class="my-3">
       <ng-container *ngIf="item && item.discount > 0; else regularPrice">
