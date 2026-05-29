@@ -31,4 +31,8 @@ export class Navbar implements OnInit, OnDestroy {
       this.cartSubscription.unsubscribe();
     }
   }
+
+  haySesion(): boolean {
+    return localStorage.getItem('userSession') !== null;
+  }
 }
