@@ -1,21 +1,28 @@
-<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100 text-center py-5">
-  <div class="row justify-content-center w-100">
-    <div class="col-md-6">
-      <div class="mb-4">
-        <i class="bi bi-exclamation-triangle text-warning display-1 animate__animated animate__bounceIn"></i>
+<div class="error-wrapper d-flex align-items-center justify-content-center min-vh-100 bg-white position-relative px-3">
+  
+  <div class="tech-grid-bg"></div>
+
+  <div class="text-center card-clean-error p-5 rounded-4 shadow-sm border bg-white position-relative z-1">
+    
+    <div class="laptop-animation-container mb-4">
+      <div class="laptop-icon">
+        <i class="bi bi-laptop display-1 text-primary laptop-screen"></i>
+        <div class="laptop-base bg-secondary"></div>
       </div>
-      
-      <h1 class="fw-black text-dark display-3 mb-2">Error 404</h1>
-      <h3 class="fw-bold text-secondary mb-4">Página No Encontrada</h3>
-      
-      <p class="text-muted mb-5 px-3">
-        Lo sentimos, la solución informática o la ruta a la que estás intentando acceder no existe, 
-        ha sido movida o el enlace está roto.
-      </p>
-      
-      <a routerLink="/home" class="btn btn-dark btn-lg rounded-pill px-5 shadow-sm fs-6">
-        <i class="bi bi-house-door-fill me-2"></i> Volver al Inicio de Soft Consultores
+    </div>
+
+    <h2 class="fw-extrabold text-dark mb-2">¡Uy! Alguien se equivocó de ruta</h2>
+    <h5 class="text-primary fw-semibold mb-4">Código de estado: 404 (Dirección no encontrada)</h5>
+    
+    <p class="text-muted mx-auto mb-4 lead-text">
+      No te preocupes, en <strong>Soft Consultores</strong> no dejamos que nadie se pierda. El enlace que presionaste cambió de dirección o el script de navegación tuvo un salto inesperado. Nosotros te ayudamos a regresar a un entorno seguro.
+    </p>
+
+    <div class="mt-2">
+      <a routerLink="/home" class="btn btn-primary btn-lg rounded-3 px-5 py-3 fw-bold shadow-sm btn-tech-glide d-inline-flex align-items-center gap-2">
+        <i class="bi bi-house-door-fill"></i> Regresar al Home de forma segura
       </a>
     </div>
+
   </div>
 </div>
