@@ -48,9 +48,17 @@
             <a class="btn btn-primary w-100" routerLink="/contacto">Contacto</a>
           </li>
           <li class="nav-item ms-lg-1 my-1 my-lg-0 w-100 text-center">
+            @if (haySesion()) {
+            <button type="button" class="btn btn-outline-danger w-100" title="Cerrar sesión" (click)="cerrarSesion()">
+              <i class="bi bi-box-arrow-right"></i>
+              <span class="d-lg-none ms-2">Salir</span>
+            </button>
+            } @else {
             <a class="btn btn-outline-secondary w-100" routerLink="/login" title="Ingresar / Registrarse">
-              <i class="bi bi-person"></i> <span class="d-lg-none ms-2">Ingresar</span>
+              <i class="bi bi-person"></i>
+              <span class="d-lg-none ms-2">Ingresar</span>
             </a>
+            }
           </li>
         </ul>
       </div>
